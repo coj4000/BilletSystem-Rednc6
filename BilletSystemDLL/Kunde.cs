@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BilletSystemDLL
 {
-    public class Class1
+    class Kunde
     {
+        public List<KøreTøj> TurListe { get; set; }
     }
 }

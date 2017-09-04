@@ -9,33 +9,19 @@ using System.Threading.Tasks;
 namespace BilletSystemDLL.Tests
 {
     [TestClass()]
-    public class BilTests
+    public class KøreTøjTests
     {
         [TestMethod()]
-        public void BilPrisBBFalseTest()
-        {
-            //Arrange
-            var bil = new Bil("1234567", Convert.ToDateTime("28-8-2017"), false, KøreTøj.BroType.Øresund);
-
-            //Act
-            int pris = bil.Pris();
-
-            //Assert
-            Assert.AreEqual(410, pris);
-        }
-
-        [TestMethod()]
-        public void BilTypeTest()
+        public void nummerPladeTest()
         {
             //Arrange
             var bil = new Bil("1234567", Convert.ToDateTime("28-8-2017"), true, KøreTøj.BroType.Øresund);
 
             //Act
-            string type = bil.Type();
+            string nrPlade = bil.nummerPlade("1234567");
 
             //Assert
-            Assert.AreEqual("Bil", type);
+            Assert.AreEqual(bil.NummerPlade, nrPlade);
         }
-
     }
 }

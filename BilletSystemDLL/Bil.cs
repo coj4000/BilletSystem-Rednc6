@@ -6,20 +6,54 @@ using System.Threading.Tasks;
 
 namespace BilletSystemDLL
 {
-    public class Bil
+    public class Bil : KøreTøj
     {
-        public String NummberPlade { get; set; }
-
-        public DateTime Dato { get; set; }
-
-        public int Pris()
+        public Bil(string nummerPlade, DateTime dato, bool brobizz, BroType broNavn) 
+            : base(nummerPlade, dato, brobizz, broNavn)
         {
-            return 240;
         }
 
-        public string KøreTøj()
+        public override int Pris()
+        {
+            int pris = 240;
+            int rabatBB;
+
+            if (BroNavn == BroType.Øresund)
+            {
+                pris = 410;
+
+                if (Brobizz == true)
+                {
+                    return 161;
+                }
+            }
+
+            if ((Dato.DayOfWeek == DayOfWeek.Saturday || Dato.DayOfWeek == DayOfWeek.Sunday))
+            {
+                int rabatWD = (pris / 100) * 20;
+
+                if (Brobizz == true)
+                {
+                    pris = pris - rabatWD;
+                    rabatBB = (pris / 100) * 5;
+                    return pris - rabatBB;
+                }
+
+                return pris - rabatWD;
+            }
+            if (Brobizz == true)
+            {
+                rabatBB = (pris / 100) * 5;
+                return pris - rabatBB;
+            }
+
+            return pris;
+        }
+
+        public override string Type()
         {
             return "Bil";
         }
+    
     }
 }

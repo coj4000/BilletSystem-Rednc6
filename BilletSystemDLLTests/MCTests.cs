@@ -12,10 +12,10 @@ namespace BilletSystemDLL.Tests
     public class MCTests
     {
         [TestMethod()]
-        public void PrisTest()
+        public void MCPrisBBTrueeØSTest()
         {
             //Arrange
-            var mc = new MC();
+            var mc = new MC("1234567", Convert.ToDateTime("28-8-2017"), false, KøreTøj.BroType.Storbæltsbroen);
 
             //Act
             int pris = mc.Pris();
@@ -25,13 +25,13 @@ namespace BilletSystemDLL.Tests
         }
 
         [TestMethod()]
-        public void KøreTøjTest()
+        public void MCTypeTest()
         {
             //Arrange
-            var mc = new MC();
+            var mc = new MC("1234567", Convert.ToDateTime("28-8-2017"), true, KøreTøj.BroType.Øresund);
 
             //Act
-            string type = mc.KøreTøj();
+            string type = mc.Type();
 
             //Assert
             Assert.AreEqual("MC", type);
