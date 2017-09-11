@@ -34,5 +34,6 @@ namespace BilletSystemDLL
 
             return nummerPladeNr;
         }
+        //To Do; 1) summaries , 2) Bedre variabel navne
     }
 }
